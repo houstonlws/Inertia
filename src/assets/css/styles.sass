@@ -1,0 +1,28 @@
+@use '../sass/_variables.sass' as *
+@use '../sass/_mixins.sass' as *
+
+#app
+  @include flex-center
+  height: 100vh
+  box-sizing: border-box
+  overflow: hidden
+
+body
+  background-color: $background-color,
+  font-family: 'Lato', sans-serif
+  color: $text-color
+  fill: $text-color
+  height: 100vh
+  margin: 0
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: 'Montserrat', sans-serif
+  color: $text-color
+
+hr
+    width: 100%
