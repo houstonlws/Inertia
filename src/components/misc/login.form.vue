@@ -7,6 +7,7 @@
           v-model="email"
           label="Email Address"
           :error-messages="errors.email"
+          placeholder="Email"
         ></input>
         <input
           class="inertia-form-input"
@@ -15,6 +16,7 @@
           v-model="password"
           label="Password"
           :error-messages="errors.password"
+          placeholder="Password"
         >
         </input>
         <button class="button" type="submit" block>Submit</button>
@@ -49,3 +51,8 @@ const store = responseStore()
 const onSubmit = handleSubmit(async (values) => {
 });
 </script>
+
+<style lang="sass" scoped>
+.button
+  @include button
+</style>

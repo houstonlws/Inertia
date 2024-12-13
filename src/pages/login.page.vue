@@ -26,3 +26,9 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.login
+  @include flex-start
+  text-align: center
+</style>
