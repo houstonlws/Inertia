@@ -1,5 +1,5 @@
 <template>
-  <button class="gsi-material-button">
+  <button @click="login" class="gsi-material-button">
     <div class="gsi-material-button-state"></div>
     <div class="gsi-material-button-content-wrapper">
       <div class="gsi-material-button-icon">
@@ -36,6 +36,8 @@
 </template>
 
 <script lang="ts">
+import { AuthStore } from '../../stores/auth.store';
+
 export default {
   name: 'GoogleButton',
   props: {
@@ -54,8 +56,13 @@ export default {
         2: 'Sign up with Google',
         3: 'Continue with Google',
         4: 'Sign in',
-      },
+      } as any,
     };
+  },
+  methods: {
+    async login() {
+      await AuthStore().loginWithGoogle();
+    },
   },
 };
 </script>

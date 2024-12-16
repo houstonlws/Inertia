@@ -1,0 +1,55 @@
+<template>
+  <form class="inertia-form" @submit.prevent="onSubmit">
+    <input
+      class="inertia-form-input"
+      name="email"
+      type="email"
+      v-model="email"
+      label="Email Address"
+      :error-messages="emailError"
+      placeholder="Email"
+    ></input>
+    <input
+      class="inertia-form-input"
+      name="password"
+      type="password"
+      v-model="password"
+      label="Password"
+      :error-messages="passwordError"
+      placeholder="Password"
+    >
+    </input>
+    <button class="button" type="submit" block>Submit</button>
+  </form>
+</template>
+
+<script setup lang="ts">
+import { useField, useForm } from 'vee-validate';
+import { useRouter } from 'vue-router';
+import * as yup from 'yup';
+
+const router = useRouter();
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .matches(
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      'Must enter valid email'
+    )
+    .required('Email is required'),
+  password: yup.string().required('Password is required'),
+});
+
+const { handleSubmit, errors } = useForm({ validationSchema: schema });
+
+const { value: email, errorMessage: emailError } = useField('email');
+const { value: password, errorMessage: passwordError } = useField('password');
+
+const onSubmit = handleSubmit(async (values) => {
+});
+</script>
+
+<style lang="sass" scoped>
+.button
+  @include button
+</style>

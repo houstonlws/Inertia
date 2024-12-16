@@ -1,27 +1,28 @@
 <template>
-  <div class="register">
-    <h2>Create An Account</h2>
-    <div class="register-menu">
-      <div class="register-menu-title">
-        <p>How would you like to sign up</p>
-      </div>
-      <div class="register-menu-item">
-        <register-form />
-        <google-button :message="2" />
-      </div>
+  <article class="register">
+    <div class="register-item">
+      <h2>Create An Account</h2>
+      <p>How would you like to sign up?</p>
     </div>
-  </div>
+    <div class="register-item methods">
+      <google-button :message="2" />
+      <text-divider :text="'or'" />
+      <register-form />
+    </div>
+  </article>
 </template>
 
 <script lang="ts">
-import GoogleButton from '@/components/misc/google.button.vue';
-import RegisterForm from '@/components/misc/register.form.vue';
+import GoogleButton from '@/components/atoms/google.button.vue';
+import TextDivider from '@/components/atoms/text.divider.vue';
+import RegisterForm from '@/components/molecules/register.form.vue';
 
 export default {
   name: 'RegisterPage',
   components: {
     RegisterForm,
     GoogleButton,
+    TextDivider,
   },
 };
 </script>
@@ -30,4 +31,10 @@ export default {
 .register
   @include flex-start
   text-align: center
+  gap: 1rem
+  &-item
+    @include flex-start
+    width: 100%
+    &.methods
+      gap: .5rem
 </style>

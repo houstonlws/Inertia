@@ -27,6 +27,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "firebase.config.ts"
+    "firebase.config.ts",
+    "src/utils/check-auth.ts"
   ]
 }

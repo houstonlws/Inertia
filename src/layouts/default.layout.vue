@@ -2,15 +2,15 @@
   <div class="layout">
     <response-component />
     <navbar-component />
-    <main>
+    <main class="layout-body">
       <slot />
     </main>
   </div>
 </template>
 
 <script lang="ts">
-import NavbarComponent from '../components/shared/navbar.component.vue';
-import ResponseComponent from '../components/shared/response.component.vue';
+import ResponseComponent from '@/components/molecules/response.molecule.vue';
+import NavbarComponent from '@/components/organisms/navbar.organism.vue';
 
 export default {
   name: 'DefaultLayout',
@@ -21,12 +21,12 @@ export default {
 };
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
 .layout
   width: 100%
   height: 100%
-  & main
+  &-body,
+  &-body article
     width: 100%
     height: 100%
-    @include flex-start
 </style>
