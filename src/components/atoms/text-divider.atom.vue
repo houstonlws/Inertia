@@ -1,7 +1,7 @@
 <template>
   <span class="divider"
     ><hr />
-    or
+    {{ text }}
     <hr
   /></span>
 </template>
