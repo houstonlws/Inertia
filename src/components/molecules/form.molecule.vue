@@ -1,0 +1,60 @@
+<template>
+  <form class="inertia-form" @submit.prevent="onSubmit">
+    <FormInput
+      v-for="(field, index) of fields"
+      :key="index"
+      :name="field.name"
+      :label="field.label"
+      :type="field.type"
+      :placeholder="field.placeholder"
+      v-model="values[field.name]"
+      :error-messages="errors[field.name]"
+    />
+    <button class="submit-button" type="submit">Submit</button>
+  </form>
+</template>
+
+<script setup lang="ts">
+import { useField, useForm } from 'vee-validate';
+import { reactive } from 'vue';
+import * as yup from 'yup';
+import { Schema } from 'yup';
+import FormInput from '../atoms/form-field.atom.vue';
+
+const props = defineProps<{
+  fields: {
+    name: string;
+    label?: string;
+    type?: string;
+    placeholder?: string;
+    rules?: Schema<any>;
+  }[];
+  onSubmitHandler: (values: Record<string, any>) => Promise<void>;
+}>();
+
+const { errors, handleSubmit } = useForm({
+  validationSchema: yup.object().shape(
+    props.fields.reduce((acc, field) => {
+      acc[field.name] = field.rules || yup.mixed();
+      return acc;
+    }, {} as Record<string, Schema<any>>)
+  ),
+});
+
+const values = reactive(
+  props.fields.reduce((acc, field) => {
+    const { value } = useField(field.name);
+    acc[field.name] = value;
+    return acc;
+  }, {} as Record<string, any>)
+);
+
+const onSubmit = handleSubmit(async (values) => {
+  await props.onSubmitHandler(values);
+});
+</script>
+
+<style scoped lang="sass">
+.submit-button
+    @include button
+</style>

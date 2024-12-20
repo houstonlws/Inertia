@@ -7,22 +7,33 @@
     <div class="register-item methods">
       <google-button :message="2" />
       <text-divider :text="'or'" />
-      <register-form />
+      <form-molecule
+        :fields="registerFormFields"
+        :on-submit-handler="register"
+      />
     </div>
   </article>
 </template>
 
 <script lang="ts">
-import GoogleButton from '@/components/atoms/google.button.vue';
-import TextDivider from '@/components/atoms/text.divider.vue';
-import RegisterForm from '@/components/molecules/register.form.vue';
+import GoogleButton from '@atoms/google-button.atom.vue';
+import TextDivider from '@atoms/text-divider.atom.vue';
+import FormMolecule from '@molecules/form.molecule.vue';
+import { registerFormFields } from '../data/register.fields';
+import { AuthStore } from '../stores/auth';
 
 export default {
   name: 'RegisterPage',
   components: {
-    RegisterForm,
     GoogleButton,
     TextDivider,
+    FormMolecule,
+  },
+  setup() {
+    const register = async (values: Record<string, any>) => {
+      await AuthStore().registerWithEmail(values.email, values.password);
+    };
+    return { registerFormFields, register };
   },
 };
 </script>

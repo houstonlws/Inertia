@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { AuthStore } from '../../stores/auth.store';
+import { AuthStore } from '../../stores/auth';
 
 export default {
   name: 'GoogleButton',

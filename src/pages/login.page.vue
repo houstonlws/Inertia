@@ -10,7 +10,10 @@
     <div class="login-item methods">
       <google-button :message="3" />
       <text-divider :text="'or'" />
-      <login-form></login-form>
+      <form-molecule
+        :fields="loginFormFields"
+        :on-submit-handler="loginWithEmail"
+      />
     </div>
     <div class="login-item">
       <h3>Don’t have an account yet?</h3>
@@ -18,24 +21,35 @@
         <router-link tag="a" to="/register">Sign Up for Free </router-link> and
         get started today!
       </span>
-      <a href="#">Continue as Guest </a>
+      <a @click="loginAsGuest" href="#">Continue as Guest </a>
     </div>
   </article>
 </template>
 
 <script lang="ts">
-import GoogleButton from '@/components/atoms/google.button.vue';
-import TextDivider from '@/components/atoms/text.divider.vue';
-import LoginForm from '@/components/molecules/login.form.vue';
 import DefaultLayout from '@/layouts/default.layout.vue';
+import GoogleButton from '@atoms/google-button.atom.vue';
+import TextDivider from '@atoms/text-divider.atom.vue';
+import FormMolecule from '@molecules/form.molecule.vue';
+import { loginFormFields } from '../data/login.fields';
+import { AuthStore } from '../stores/auth';
 
 export default {
   name: 'LoginPage',
   components: {
-    LoginForm,
     DefaultLayout,
     GoogleButton,
     TextDivider,
+    FormMolecule,
+  },
+  setup() {
+    const loginAsGuest = async () => {
+      await AuthStore().loginAsGuest();
+    };
+    const loginWithEmail = async (values: Record<string, any>) => {
+      await AuthStore().loginWithEmail(values.email, values.password);
+    };
+    return { loginAsGuest, loginFormFields, loginWithEmail };
   },
 };
 </script>

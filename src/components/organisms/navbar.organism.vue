@@ -9,21 +9,26 @@
       /></router-link>
     </div>
 
-    <div class="navbar-menu">
+    <div v-if="!authorized" class="navbar-menu">
       <router-link to="/login" class="navbar-button">Login</router-link>
       <router-link to="/register" class="navbar-button">Register</router-link>
+    </div>
+
+    <div v-else class="navbar-menu">
+      <a @click="logout" class="navbar-button">Logout</a>
     </div>
   </nav>
 </template>
 
-<script>
-export default {
-  name: 'NavbarComponent',
-  data() {
-    return {
-      isMenuOpen: false,
-    };
-  },
+<script setup lang="ts">
+import { computed } from 'vue';
+import { AuthStore } from '../../stores/auth';
+
+const authStore = AuthStore();
+const authorized = computed(() => authStore.authorized);
+
+const logout = async () => {
+  await authStore.logout();
 };
 </script>
 

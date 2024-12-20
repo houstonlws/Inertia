@@ -1,7 +1,13 @@
 <template>
-  <div :class="{ response: true, visible: message }">
+  <div
+    :class="{
+      response: true,
+      visible: message.value,
+      [message.type]: message.type,
+    }"
+  >
     <div class="response-message">
-      {{ message }}
+      {{ message.value }}
     </div>
   </div>
 </template>
@@ -10,7 +16,7 @@
 import responseStore from '@/stores/response.store';
 import { computed } from 'vue';
 const sotre = responseStore();
-const message = computed(() => sotre.message.value);
+const message = computed(() => sotre.message);
 </script>
 
 <style lang="sass" scoped>
@@ -19,14 +25,22 @@ const message = computed(() => sotre.message.value);
     top: -100px
     left: 50%
     transform: translateX(-50%)
-    padding: 10px 20px
     border-radius: 5px
-    background: red
+    background: $info
     color: white
     z-index: 9999
-    transition: top 0.5s ease-out
+    transition: top 0.5s ease-in
+    opacity: 0
     &-message
         font-size: 1.2rem
     &.visible
         top: 100px
+        padding: 10px 20px
+        opacity: 1
+    &.error
+       background: $error
+    &.success
+        background: $success
+    &.warning
+        background: $warning
 </style>

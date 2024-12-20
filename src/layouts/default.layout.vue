@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import ResponseComponent from '@/components/molecules/response.molecule.vue';
-import NavbarComponent from '@/components/organisms/navbar.organism.vue';
+import ResponseComponent from '@molecules/response.molecule.vue';
+import NavbarComponent from '@organisms/navbar.organism.vue';
 
 export default {
   name: 'DefaultLayout',

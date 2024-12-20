@@ -1,11 +1,5 @@
 import { defineStore } from 'pinia';
-
-type ResponseType = 'error' | 'success' | 'info' | 'warning' | null;
-
-type ResponseMessage = {
-  value: String | null;
-  type: ResponseType;
-};
+import { ResponseMessage, ResponseType } from '../types';
 
 export default defineStore('response', {
   state: () => ({
@@ -17,7 +11,7 @@ export default defineStore('response', {
   actions: {
     setMessage(
       value: String,
-      type: ResponseType = 'error',
+      type: ResponseType = 'info',
       duration: number = 5000
     ) {
       this.message = { value, type };

@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { AuthStore } from '../stores/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA6XVHUocBiV7JJbeNLfgZp8CdT1KwTHVQ',
@@ -17,9 +18,11 @@ export const fbAuth = getAuth(firebase);
 export const checkAuth = () => {
   onAuthStateChanged(fbAuth, async (user) => {
     if (user) {
-      console.log('user is logged in');
+      AuthStore().authorized = true;
+      console.info('user is logged in');
     } else {
-      console.log('user is logged out');
+      AuthStore().authorized = false;
+      console.info('user is logged out');
     }
   });
 };
