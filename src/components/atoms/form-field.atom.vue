@@ -2,12 +2,12 @@
   <label v-if="label" :for="name">{{ label }}</label>
 
   <input
+    class="form-input"
     :id="name"
     :name="name"
     :type="type"
     :placeholder="placeholder"
     v-model="inputValue"
-    class="inertia-form-input"
   />
 
   <span v-if="hasErrors" class="error-message">
@@ -58,6 +58,19 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.form-input
+  display: block
+  padding: 5px 10px
+  font-size: 1rem
+  color: #495057
+  background-color: #fff
+  background-clip: padding-box
+  border: 1px solid #ced4da
+  border-radius: 5px
+  line-height: 1.5
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+  &:focus
+    outline: 0
 .error-message
   color: red
 </style>

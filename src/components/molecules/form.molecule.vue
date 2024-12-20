@@ -1,5 +1,5 @@
 <template>
-  <form class="inertia-form" @submit.prevent="onSubmit">
+  <form class="form" @submit.prevent="onSubmit">
     <FormInput
       v-for="(field, index) of fields"
       :key="index"
@@ -15,11 +15,11 @@
 </template>
 
 <script setup lang="ts">
+import FormInput from '@atoms/form-field.atom.vue';
 import { useField, useForm } from 'vee-validate';
 import { reactive } from 'vue';
 import * as yup from 'yup';
 import { Schema } from 'yup';
-import FormInput from '../atoms/form-field.atom.vue';
 
 const props = defineProps<{
   fields: {
@@ -55,6 +55,11 @@ const onSubmit = handleSubmit(async (values) => {
 </script>
 
 <style scoped lang="sass">
+.form
+    display: flex
+    flex-direction: column
+    align-content: center
+    gap: 5px
 .submit-button
     @include button
 </style>
