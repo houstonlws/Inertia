@@ -1,0 +1,16 @@
+@use '../variables' as *
+@use 'sass:color'
+
+@mixin button($bg-color: $primary-color, $color: $text-color)
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 12px 15px
+  border-radius: 5px
+  border: none
+  cursor: pointer
+  text-decoration: none
+  background: $bg-color
+  color: $color
+  &:hover
+    background: color.adjust($bg-color, $blackness: 10%)

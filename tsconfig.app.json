@@ -28,6 +28,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "firebase.config.ts",
-    "src/utils/check-auth.ts"
+    "src/utils/check-auth.ts",
+    "src/assets/styles/mixins/_index.sass"
   ]
 }
