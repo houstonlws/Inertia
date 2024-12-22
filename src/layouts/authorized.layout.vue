@@ -8,17 +8,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import ResponseComponent from '@molecules/response.molecule.vue';
 import NavbarComponent from '@organisms/navbar.organism.vue';
-
-export default {
-  name: 'DefaultLayout',
-  components: {
-    NavbarComponent,
-    ResponseComponent,
-  },
-};
 </script>
 
 <style lang="sass">

@@ -30,8 +30,9 @@ export default {
     FormMolecule,
   },
   setup() {
+    const authStore = AuthStore();
     const register = async (values: Record<string, any>) => {
-      await AuthStore().registerWithEmail(values.email, values.password);
+      await authStore.registerWithEmail(values.email, values.password);
     };
     return { registerFormFields, register };
   },

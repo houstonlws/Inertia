@@ -1,8 +1,8 @@
 <template>
   <form class="form" @submit.prevent="onSubmit">
-    <FormInput
-      v-for="(field, index) of fields"
-      :key="index"
+    <FormField
+      v-for="field of fields"
+      :key="field.name"
       :name="field.name"
       :label="field.label"
       :type="field.type"
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import FormInput from '@atoms/form-field.atom.vue';
+import FormField from '@atoms/form-field.atom.vue';
 import { useField, useForm } from 'vee-validate';
 import { reactive } from 'vue';
 import * as yup from 'yup';

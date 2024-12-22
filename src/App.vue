@@ -5,13 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import DefaultLayout from '@/layouts/default.layout.vue';
 import { computed } from 'vue';
 import { RouterView } from 'vue-router';
+import { AppStore } from './stores/app.store';
 
-const layout = computed(() => {
-  return DefaultLayout;
-});
+const appStore = AppStore();
+
+const layout = computed(() => appStore.layout);
 </script>
 
 <style scoped></style>

@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { AuthStore } from '../stores/auth';
+import AuthorizedLayout from '../layouts/authorized.layout.vue';
+import DefaultLayout from '../layouts/default.layout.vue';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA6XVHUocBiV7JJbeNLfgZp8CdT1KwTHVQ',
@@ -15,14 +16,22 @@ const firebase = initializeApp(firebaseConfig);
 
 export const fbAuth = getAuth(firebase);
 
-export const checkAuth = () => {
-  onAuthStateChanged(fbAuth, async (user) => {
+export const checkAuth = async () => {
+  const { AppStore } = await import('../stores/app.store');
+  const { AuthStore } = await import('../stores/auth');
+  const authStore = AuthStore();
+  const appStore = AppStore();
+  onAuthStateChanged(fbAuth, (user) => {
     if (user) {
-      AuthStore().authorized = true;
+      authStore.setAuthorized(true);
+      appStore.setLayout(AuthorizedLayout);
       console.info('user is logged in');
+      return true;
     } else {
-      AuthStore().authorized = false;
+      authStore.setAuthorized(false);
+      appStore.setLayout(DefaultLayout);
       console.info('user is logged out');
+      return false;
     }
   });
 };

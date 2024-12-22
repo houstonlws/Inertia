@@ -13,10 +13,10 @@
 </template>
 
 <script setup laug="ts">
-import responseStore from '@/stores/response.store';
+import { AppStore } from '@/stores/app.store';
 import { computed } from 'vue';
-const sotre = responseStore();
-const message = computed(() => sotre.message);
+const appStore = AppStore();
+const message = computed(() => appStore.message);
 </script>
 
 <style lang="sass" scoped>

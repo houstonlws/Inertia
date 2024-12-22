@@ -1,12 +1,18 @@
 import { defineStore } from 'pinia';
+import { markRaw } from 'vue';
+import AuthorizedLayout from '../layouts/authorized.layout.vue';
+import DefaultLayout from '../layouts/default.layout.vue';
 import { ResponseMessage, ResponseType } from '../types';
 
-export default defineStore('response', {
+export const AppStore = defineStore('app', {
   state: () => ({
     message: {
       value: null,
       type: null,
     } as ResponseMessage,
+    layout: markRaw(DefaultLayout) as
+      | typeof DefaultLayout
+      | typeof AuthorizedLayout,
   }),
   actions: {
     setMessage(
@@ -18,6 +24,9 @@ export default defineStore('response', {
       setTimeout(() => {
         this.message = { value: null, type: null };
       }, duration);
+    },
+    setLayout(layout: typeof DefaultLayout | typeof AuthorizedLayout) {
+      this.layout = markRaw(layout);
     },
   },
 });

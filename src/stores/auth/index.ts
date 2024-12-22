@@ -1,10 +1,14 @@
 import { defineStore } from 'pinia';
-import * as authLogin from './auth.login';
-import * as authRegister from './auth.register';
+import * as login from './actions/login.actions';
+import * as register from './actions/register.actions';
+import * as state from './auth.state';
 
-export const AuthStore = defineStore('auth', () => {
-  return {
-    ...authLogin,
-    ...authRegister,
-  };
+export const AuthStore = defineStore('auth', {
+  state: () => ({
+    ...state,
+  }),
+  actions: {
+    ...login,
+    ...register,
+  },
 });
