@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { fbAuth } from '../../../utils/firebase';
-import { importAppStore } from '../utils/importAppStore';
+import { importAppStore } from '../../../utils/importAppStore';
 
 export const registerWithEmail = async (email: string, password: string) => {
   const appStore = await importAppStore();

@@ -6,8 +6,8 @@ import {
   signOut,
 } from 'firebase/auth';
 import { fbAuth } from '../../../utils/firebase';
+import { importAppStore } from '../../../utils/importAppStore';
 import { setAuthorized } from '../auth.state';
-import { importAppStore } from '../utils/importAppStore';
 
 export const loginWithEmail = async (email: string, password: string) => {
   const appStore = await importAppStore();
