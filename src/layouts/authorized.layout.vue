@@ -6,7 +6,7 @@
       :visible="sidebarVisible"
     />
     <navbar-molecule
-      @clickLogo="clickedLogo"
+      @clickLogo="toggleSidebar"
       :showMenuIcon="authStore.authorized"
       :showLogo="true"
       :menuItems="[{ name: 'Logout', action: authStore.logout }]"
@@ -22,16 +22,14 @@ import NavbarMolecule from '@molecules/navbar.molecule.vue';
 import ResponseComponent from '@molecules/response.molecule.vue';
 import SidebarMolecule from '@molecules/sidebar.molecule.vue';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 import { AuthStore } from '../stores/auth';
 
 const authStore = AuthStore();
-const router = useRouter();
+
 const sidebarVisible = ref<boolean>(false);
-const clickedLogo = () => {
-  if (!authStore.authorized) router.push('/');
-  else sidebarVisible.value = !sidebarVisible.value;
-};
+
+const toggleSidebar = () => (sidebarVisible.value = !sidebarVisible.value);
+
 const clickedOutside = () => (sidebarVisible.value = false);
 </script>
 

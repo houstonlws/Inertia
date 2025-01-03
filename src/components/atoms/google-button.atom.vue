@@ -35,36 +35,24 @@
   </button>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from 'vue';
 import { AuthStore } from '../../stores/auth';
 
-export default {
-  name: 'GoogleButton',
-  props: {
-    message: {
-      type: Number,
-      default: 1,
-      validator: function (value: any) {
-        return [1, 2, 3, 4].includes(value);
-      },
-    },
-  },
-  data() {
-    return {
-      messages: {
-        1: 'Sign in with Google',
-        2: 'Sign up with Google',
-        3: 'Continue with Google',
-        4: 'Sign in',
-      } as any,
-    };
-  },
-  methods: {
-    async login() {
-      await AuthStore().loginWithGoogle();
-    },
-  },
+const props = defineProps<{ message?: 1 | 2 | 3 | 4 }>();
+
+const authStore = AuthStore();
+
+const message = ref<number>(props.message || 1);
+
+const messages: Record<number, string> = {
+  1: 'Sign in with Google',
+  2: 'Sign up with Google',
+  3: 'Continue with Google',
+  4: 'Sign in',
 };
+
+const login = async () => await authStore.loginWithGoogle();
 </script>
 
 <style scoped>

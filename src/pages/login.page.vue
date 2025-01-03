@@ -26,33 +26,18 @@
   </article>
 </template>
 
-<script lang="ts">
-import DefaultLayout from '@/layouts/default.layout.vue';
+<script setup lang="ts">
 import GoogleButton from '@atoms/google-button.atom.vue';
 import TextDivider from '@atoms/text-divider.atom.vue';
 import FormMolecule from '@molecules/form.molecule.vue';
 import { loginFormFields } from '../data/login.fields';
 import { AuthStore } from '../stores/auth';
 
-export default {
-  name: 'LoginPage',
-  components: {
-    DefaultLayout,
-    GoogleButton,
-    TextDivider,
-    FormMolecule,
-  },
-  setup() {
-    const authStore = AuthStore();
-    const loginAsGuest = async () => {
-      await authStore.loginAsGuest();
-    };
-    const loginWithEmail = async (values: Record<string, any>) => {
-      await authStore.loginWithEmail(values.email, values.password);
-    };
-    return { loginAsGuest, loginFormFields, loginWithEmail };
-  },
-};
+const authStore = AuthStore();
+const loginAsGuest = async () => await authStore.loginAsGuest();
+
+const loginWithEmail = async (values: Record<string, any>) =>
+  await authStore.loginWithEmail(values.email, values.password);
 </script>
 
 <style lang="sass" scoped>

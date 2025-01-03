@@ -18,9 +18,7 @@ export const AppStore = defineStore('app', () => {
     duration: number = 5000
   ) => {
     message.value = { value, type };
-    setTimeout(() => {
-      message.value = { value: null, type: null };
-    }, duration);
+    setTimeout(() => (message.value = { value: null, type: null }), duration);
   };
 
   const fetchLayout = async () => {
