@@ -43,11 +43,12 @@ export default {
     FormMolecule,
   },
   setup() {
+    const authStore = AuthStore();
     const loginAsGuest = async () => {
-      await AuthStore().loginAsGuest();
+      await authStore.loginAsGuest();
     };
     const loginWithEmail = async (values: Record<string, any>) => {
-      await AuthStore().loginWithEmail(values.email, values.password);
+      await authStore.loginWithEmail(values.email, values.password);
     };
     return { loginAsGuest, loginFormFields, loginWithEmail };
   },

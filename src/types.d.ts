@@ -18,3 +18,11 @@ type ResponseMessage = {
   value: String | null;
   type: ResponseType;
 };
+
+type MenuItem = {
+  name: string;
+  icon?: string;
+  to?: string;
+  action?: () => void;
+  children?: MenuItem[];
+};

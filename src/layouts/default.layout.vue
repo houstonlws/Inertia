@@ -1,24 +1,28 @@
 <template>
   <div class="layout">
     <response-component />
-    <navbar-component />
+    <navbar-molecule
+      :show-logo="true"
+      :menu-items="menuItems"
+      @click-logo="router.push('/')"
+    />
     <main class="layout-body">
       <slot />
     </main>
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import ResponseComponent from '@molecules/response.molecule.vue';
-import NavbarComponent from '@organisms/navbar.organism.vue';
+import { useRouter } from 'vue-router';
+import navbarMolecule from '../components/molecules/navbar.molecule.vue';
 
-export default {
-  name: 'DefaultLayout',
-  components: {
-    NavbarComponent,
-    ResponseComponent,
-  },
-};
+const router = useRouter();
+
+const menuItems = [
+  { name: 'Login', to: '/login' },
+  { name: 'Register', to: '/register' },
+];
 </script>
 
 <style lang="sass">
