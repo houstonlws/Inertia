@@ -25,7 +25,4 @@ const menuItems = [
 ];
 </script>
 
-<style lang="sass" scoped>
-.layout
-    @include full-screen
-</style>
+<style lang="sass" scoped></style>

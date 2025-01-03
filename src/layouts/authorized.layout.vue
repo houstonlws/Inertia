@@ -35,7 +35,4 @@ const clickedLogo = () => {
 const clickedOutside = () => (sidebarVisible.value = false);
 </script>
 
-<style lang="sass" scoped>
-.layout
-    @include full-screen
-</style>
+<style lang="sass" scoped></style>
