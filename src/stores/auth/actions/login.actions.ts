@@ -5,13 +5,12 @@ import {
   signInWithPopup,
   signOut,
 } from 'firebase/auth';
+import { router } from '../../../router';
 import { fbAuth } from '../../../utils/firebase';
-import { getGlobalRouter } from '../../../utils/globalRouter';
 import { importAppStore } from '../../../utils/importAppStore';
 import { setAuthorized } from '../auth.state';
 
 export const loginWithEmail = async (email: string, password: string) => {
-  const router = getGlobalRouter();
   const appStore = await importAppStore();
   signInWithEmailAndPassword(fbAuth, email, password)
     .then(() => {
@@ -25,7 +24,6 @@ export const loginWithEmail = async (email: string, password: string) => {
 
 export const loginWithGoogle = async () => {
   const appStore = await importAppStore();
-  const router = getGlobalRouter();
   const provider = new GoogleAuthProvider();
   signInWithPopup(fbAuth, provider)
     .then(() => {
@@ -37,7 +35,6 @@ export const loginWithGoogle = async () => {
 
 export const loginAsGuest = async () => {
   const appStore = await importAppStore();
-  const router = getGlobalRouter();
   signInAnonymously(fbAuth)
     .then(() => {
       setAuthorized(true);
@@ -50,7 +47,6 @@ export const loginAsGuest = async () => {
 
 export const logout = async () => {
   const appStore = await importAppStore();
-  const router = getGlobalRouter();
   signOut(fbAuth)
     .then(() => {
       setAuthorized(false);
