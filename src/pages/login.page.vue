@@ -31,7 +31,7 @@ import GoogleButton from '@atoms/google-button.atom.vue';
 import TextDivider from '@atoms/text-divider.atom.vue';
 import FormMolecule from '@molecules/form.molecule.vue';
 import { loginFormFields } from '../data/login.fields';
-import { AuthStore } from '../stores/auth';
+import { AuthStore } from '../stores/auth.store';
 
 const authStore = AuthStore();
 const loginAsGuest = async () => await authStore.loginAsGuest();

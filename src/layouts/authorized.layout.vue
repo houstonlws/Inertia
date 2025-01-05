@@ -22,7 +22,7 @@ import NavbarMolecule from '@molecules/navbar.molecule.vue';
 import ResponseComponent from '@molecules/response.molecule.vue';
 import SidebarMolecule from '@molecules/sidebar.molecule.vue';
 import { ref } from 'vue';
-import { AuthStore } from '../stores/auth';
+import { AuthStore } from '../stores/auth.store';
 
 const authStore = AuthStore();
 

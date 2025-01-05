@@ -16,7 +16,7 @@ export const fbAuth = getAuth(firebase);
 
 export const checkAuth = async () => {
   const { AppStore } = await import('../stores/app.store');
-  const { AuthStore } = await import('../stores/auth');
+  const { AuthStore } = await import('../stores/auth.store');
   const authStore = AuthStore();
   const appStore = AppStore();
 

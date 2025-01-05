@@ -20,7 +20,7 @@ import GoogleButton from '@atoms/google-button.atom.vue';
 import TextDivider from '@atoms/text-divider.atom.vue';
 import FormMolecule from '@molecules/form.molecule.vue';
 import { registerFormFields } from '../data/register.fields';
-import { AuthStore } from '../stores/auth';
+import { AuthStore } from '../stores/auth.store';
 
 export default {
   name: 'RegisterPage',

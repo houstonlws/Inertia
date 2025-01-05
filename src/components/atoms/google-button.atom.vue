@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { AuthStore } from '../../stores/auth';
+import { AuthStore } from '../../stores/auth.store';
 
 const props = defineProps<{ message?: 1 | 2 | 3 | 4 }>();
 
