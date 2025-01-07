@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="navbar-item" @click="emit('click-logo')">
       <i v-if="props.showMenuIcon" class="navbar-icon fas fa-bars"></i>
-      <site-logo-atom v-if="props.showLogo" />
+      <site-logo-atom v-if="!props.hideLogo" />
     </div>
     <menu-molecule v-if="props.menuItems" :items="props.menuItems" />
   </nav>
@@ -15,7 +15,7 @@ import { MenuItem } from '../../types';
 
 const props = defineProps<{
   showMenuIcon?: boolean;
-  showLogo?: boolean;
+  hideLogo?: boolean;
   showSearch?: boolean;
   showProfile?: boolean;
   menuItems?: MenuItem[];

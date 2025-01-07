@@ -8,7 +8,6 @@
     <navbar-molecule
       @clickLogo="toggleSidebar"
       :showMenuIcon="authStore.authorized"
-      :showLogo="true"
       :menuItems="[{ name: 'Logout', action: authStore.logout }]"
     />
     <main class="layout-body">

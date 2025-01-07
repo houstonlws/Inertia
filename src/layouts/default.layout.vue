@@ -1,11 +1,7 @@
 <template>
   <div class="layout">
     <response-component />
-    <navbar-molecule
-      :show-logo="true"
-      :menu-items="menuItems"
-      @click-logo="router.push('/')"
-    />
+    <navbar-molecule :menu-items="menuItems" @click-logo="router.push('/')" />
     <main class="layout-body">
       <slot />
     </main>
