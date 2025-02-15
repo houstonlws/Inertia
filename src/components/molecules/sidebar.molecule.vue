@@ -1,6 +1,9 @@
 <template>
   <aside ref="sidebar" class="sidebar">
     <i @click="emit('clickOutside')" class="fas fa-times close-button"></i>
+    <div class="sidebar-content">
+      <slot></slot>
+    </div>
   </aside>
 </template>
 

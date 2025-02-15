@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="navbar-item" @click="emit('click-logo')">
       <i v-if="props.showMenuIcon" class="navbar-icon fas fa-bars"></i>
-      <site-logo-atom v-if="!props.hideLogo" />
+      <site-logo-atom variant="text" v-if="!props.hideLogo" />
     </div>
     <menu-molecule v-if="props.menuItems" :items="props.menuItems" />
   </nav>
@@ -38,8 +38,6 @@ const emit = defineEmits<{ (e: 'click-logo'): void }>();
     display: flex
     align-items: center
     gap: 1rem
-  &-logo
-    height: 30px
   &-button
     @include button(#fff, #000)
 </style>
