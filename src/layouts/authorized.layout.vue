@@ -1,10 +1,11 @@
 <template>
   <div class="layout">
     <response-component />
-    <sidebar-molecule
-      @clickOutside="clickedOutside"
-      :visible="sidebarVisible"
-    />
+    <sidebar-molecule @clickOutside="clickedOutside" :visible="sidebarVisible">
+      <list-atom>
+        <selection-list-molecule :obj="exercises" />
+      </list-atom>
+    </sidebar-molecule>
     <navbar-molecule
       @clickLogo="toggleSidebar"
       :showMenuIcon="authStore.authorized"
@@ -17,10 +18,13 @@
 </template>
 
 <script setup lang="ts">
+import ListAtom from '@atoms/list.atom.vue';
 import NavbarMolecule from '@molecules/navbar.molecule.vue';
 import ResponseComponent from '@molecules/response.molecule.vue';
+import SelectionListMolecule from '@molecules/selection-list.molecule.vue';
 import SidebarMolecule from '@molecules/sidebar.molecule.vue';
 import { ref } from 'vue';
+import { exercises } from '../data/exercises.list';
 import { AuthStore } from '../stores/auth.store';
 
 const authStore = AuthStore();
