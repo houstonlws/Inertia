@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import ListItemAtom from '@atoms/list-item.atom.vue';
 import { ref } from 'vue';
 
 defineProps<{
