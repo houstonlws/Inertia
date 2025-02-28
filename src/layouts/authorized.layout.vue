@@ -3,7 +3,7 @@
     <response-component />
     <sidebar-molecule @clickOutside="clickedOutside" :visible="sidebarVisible">
       <list-atom>
-        <selection-list-molecule :obj="exercises" />
+        <selection-list-molecule :obj="exercisesList" />
       </list-atom>
     </sidebar-molecule>
     <navbar-molecule
@@ -24,7 +24,7 @@ import ResponseComponent from '@molecules/response.molecule.vue';
 import SelectionListMolecule from '@molecules/selection-list.molecule.vue';
 import SidebarMolecule from '@molecules/sidebar.molecule.vue';
 import { ref } from 'vue';
-import { exercises } from '../data/exercises.list';
+import exercisesList from '../data/exercises.list';
 import { AuthStore } from '../stores/auth.store';
 
 const authStore = AuthStore();

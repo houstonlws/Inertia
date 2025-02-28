@@ -3,7 +3,7 @@ import { markRaw, ref, shallowRef } from 'vue';
 import AuthorizedLayout from '../layouts/authorized.layout.vue';
 import DefaultLayout from '../layouts/default.layout.vue';
 import { ResponseMessage, ResponseType } from '../types';
-import { importAuthStore } from '../utils/importAuthStore';
+import { importAuthStore } from '../utils/import.utility';
 
 export const AppStore = defineStore('app', () => {
   const message = ref<ResponseMessage>({ value: null, type: null });

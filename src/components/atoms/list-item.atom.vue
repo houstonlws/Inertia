@@ -27,6 +27,6 @@ defineProps<{
     &-selectable
         cursor: pointer
         &:hover
-        background-color: #f0f0f0
-        transition: all 0.3s ease-in-out
+          background-color: #f0f0f0
+          transition: all 0.3s ease-in-out
 </style>

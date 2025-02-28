@@ -10,7 +10,7 @@ import {
 import { defineStore } from 'pinia';
 import { router } from '../router';
 import { fbAuth } from '../utils/firebase';
-import { importAppStore } from '../utils/importAppStore';
+import { importAppStore } from '../utils/import.utility';
 
 export const AuthStore = defineStore('auth', () => {
   const authorized = useLocalStorage<Boolean>('authorized', false);
